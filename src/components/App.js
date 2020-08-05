@@ -35,6 +35,7 @@ const Split = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 const Header = styled.header`

@@ -2,23 +2,33 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import CartItem from "./CartItem";
-import { getStoreItemArray } from "../reducers";
+import { getStoreItemArray, getSubtotal, getCartQuantity } from "../reducers";
 
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
+  const subtotal = useSelector(getSubtotal);
+  const cartQuantity = useSelector(getCartQuantity);
+
+  const subtotalFormatted = subtotal / 100;
+
   console.log(storeItems);
+
   return (
     <Wrapper>
       <Top>
         <YourCart>Your Cart</YourCart>
-        <ItemCounter>1 Item</ItemCounter>
+        {storeItems.length > 0 && (
+          <ItemCounter>{cartQuantity} items</ItemCounter>
+        )}
       </Top>
-      {storeItems.map((item) => {
-        return <CartItem item={item} />;
-      })}
+      <CartContent>
+        {storeItems.map((item) => {
+          return <CartItem key={item.id} item={item} />;
+        })}
+      </CartContent>
 
       <Bottom>
-        <Total>Total : </Total>
+        <Total>Total : ${subtotalFormatted}</Total>
         <PurchaseButton>Purchase</PurchaseButton>
       </Bottom>
     </Wrapper>
@@ -27,7 +37,7 @@ const Cart = () => {
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 500px;
+  width: 400px;
   background: #401f43;
   color: white;
   position: sticky;
@@ -46,6 +56,13 @@ const YourCart = styled.div`
 
 const ItemCounter = styled.span`
   color: #c9c8c8;
+`;
+
+const CartContent = styled.ul`
+  list-style-type: none;
+  align-items: center;
+  padding: 0;
+  overflow: auto;
 `;
 
 const Bottom = styled.div`

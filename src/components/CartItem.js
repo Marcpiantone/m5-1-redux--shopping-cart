@@ -3,23 +3,24 @@ import styled from "styled-components";
 
 const CartItem = (item) => {
   console.log(item);
-  const { id, title, price } = item.item;
+  const { id, title, price, quantity } = item.item;
   return (
     <Item>
       <Topdiv>
-        <ItemName>{id}</ItemName>
+        <ItemName>{title}</ItemName>
         <Quit>X</Quit>
       </Topdiv>
       <Bottomdiv>
         Quantity:
-        <ItemNum></ItemNum>
+        <ItemNum placeholder={quantity}></ItemNum>
       </Bottomdiv>
     </Item>
   );
 };
 
-const Item = styled.div`
+const Item = styled.li`
   border: 2px dashed rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
 `;
 
 const Topdiv = styled.div`
@@ -42,11 +43,16 @@ const Bottomdiv = styled.div`
 `;
 
 const ItemNum = styled.input`
+  color: white;
   border-top: none;
   border-right: none;
   border-left: none;
   width: 20px;
   height: 20px;
+  background: none;
+  &::placeholder {
+    color: white;
+  }
 `;
 
 export default CartItem;
