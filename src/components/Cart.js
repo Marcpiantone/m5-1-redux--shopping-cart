@@ -37,7 +37,9 @@ const YourCart = styled.div`
   font-size: 2em;
 `;
 
-const ItemCounter = styled.span``;
+const ItemCounter = styled.span`
+  color: #c9c8c8;
+`;
 
 const Bottom = styled.div`
   display: flex;
@@ -45,7 +47,9 @@ const Bottom = styled.div`
   align-items: center;
 `;
 
-const Total = styled.div``;
+const Total = styled.div`
+  font-size: 1.2em;
+`;
 
 const PurchaseButton = styled.button`
   width: 150px;
