@@ -1,8 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import CartItem from "./CartItem";
+import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
+  const storeItems = useSelector(getStoreItemArray);
+  console.log(storeItems);
   return (
     <Wrapper>
       <Top>
