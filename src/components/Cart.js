@@ -13,7 +13,10 @@ const Cart = () => {
         <YourCart>Your Cart</YourCart>
         <ItemCounter>1 Item</ItemCounter>
       </Top>
-      <CartItem />
+      {storeItems.map((item) => {
+        return <CartItem item={item} />;
+      })}
+
       <Bottom>
         <Total>Total : </Total>
         <PurchaseButton>Purchase</PurchaseButton>

@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const CartItem = () => {
+const CartItem = (item) => {
+  console.log(item);
+  const { id, title, price } = item.item;
   return (
     <Item>
       <Topdiv>
-        <ItemName>1st ITEM</ItemName>
+        <ItemName>{id}</ItemName>
         <Quit>X</Quit>
       </Topdiv>
       <Bottomdiv>
